@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import DrawBox
 
 # Create your views here.
 def index(request):
-    return HttpResponse("<html><body><a href='/'>Hello World</a><body></html>")
+    drawBoxes = DrawBox.objects.all()
+    
+    return render(request, "index/index.html", {'drawBoxes' : drawBoxes})
